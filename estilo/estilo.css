@@ -24,13 +24,13 @@ main {
 }
 
 main > button {
-  padding: 12px 28px;
+  padding: 38px 48px;
   border: none;
   border-radius: 14px;
   background: linear-gradient(90deg, #444466, #f5eef3, #444466);
   color: rgb(12, 11, 11);
   font-family: var(--fuente-principal);
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: 600;
   cursor: pointer;
   animation: pop 0.5s both;
