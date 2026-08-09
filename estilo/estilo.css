@@ -17,6 +17,7 @@ body {
 }
 
 main {
+  padding-top: 55px;
   display: grid;
   place-items: center;
   gap: 20px;
@@ -27,7 +28,7 @@ main > button {
   padding: 38px 48px;
   border: none;
   border-radius: 14px;
-  background: linear-gradient(90deg, #444466, #f5eef3, #444466);
+  background: linear-gradient(90deg, #0047ff, #7df9ff, #0047ff);
   color: rgb(12, 11, 11);
   font-family: var(--fuente-principal);
   font-size: 2rem;
