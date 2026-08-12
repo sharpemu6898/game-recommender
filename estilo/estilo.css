@@ -24,7 +24,7 @@ main {
   width: 100%;
 }
 
-main > button {
+.boton-test {
   padding: 38px 48px;
   border: none;
   border-radius: 14px;
@@ -37,13 +37,27 @@ main > button {
   animation: pop 0.5s both;
   transition: transform 0.2s ease;
 }
-main > button:hover {
+.boton-test:hover {
   transform: scale(1.08);
 }
 
-main > button:active {
+.boton-test:active {
   transform: scale(0.95);
   background: #24102f;
+}
+
+#opciones-test {
+  display: grid;
+  justify-items: center;
+  gap: 80px;
+  width: 100%;
+}
+
+#test-gustos,
+#test-personalidad {
+  width: min(90%, 560px);
+  padding: 24px 32px;
+  font-size: 1.4rem;
 }
 
 #banner {
