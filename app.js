@@ -22,5 +22,12 @@ botonInicio.addEventListener("click", function () {
   `;
 
   const botonGustos = document.getElementById("test-gustos");
-  const botonpersonalidad = document.getElementById("test-personalidad");
+  botonGustos.addEventListener("click", function () {
+    opcionesTest.innerHTML = `
+      <button id="genero-accion" class="boton-test">Acción</button>
+      <button id="genero-terror" class="boton-test">Terror</button>
+      <button id="genero-aventura" class="boton-test">Aventura</button>
+      <button id="genero-simulacion" class="boton-test">Simulación</button>
+    `;
+  });
 });
