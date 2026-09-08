@@ -49,8 +49,21 @@ main {
 #opciones-test {
   display: grid;
   justify-items: center;
-  gap: 80px;
+  gap: 40px;
   width: 100%;
+}
+
+.subtitulo-opciones {
+  width: min(80%, 520px);
+  margin: -55px 0 0;
+  padding: 18px 24px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  background-color: black;
+  color: white;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  text-align: center;
+  animation: pop 0.5s both;
 }
 
 #test-gustos,

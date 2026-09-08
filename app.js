@@ -12,6 +12,10 @@ botonInicio.addEventListener("click", function () {
   botonInicio.style.display = "none";
 
   opcionesTest.innerHTML = `
+    <h2 class="subtitulo-opciones">
+      Tu próxima aventura te espera
+    </h2>
+
     <button id="test-gustos" class="boton-test">
       Descubre nuevas aventuras en base a tus gustos
     </button>
@@ -24,6 +28,10 @@ botonInicio.addEventListener("click", function () {
   const botonGustos = document.getElementById("test-gustos");
   botonGustos.addEventListener("click", function () {
     opcionesTest.innerHTML = `
+      <h2 class="subtitulo-opciones">
+        Basado en tus preferencias
+      </h2>
+
       <button id="genero-accion" class="boton-test">Acción</button>
       <button id="genero-terror" class="boton-test">Terror</button>
       <button id="genero-aventura" class="boton-test">Aventura</button>
