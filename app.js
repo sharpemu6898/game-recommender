@@ -38,6 +38,19 @@ function mostrarPantalla(pantalla) {
       `;
       break;
 
+    case "personalidad":
+      opcionesTest.innerHTML = `
+        <h2 class="subtitulo-opciones">
+          Basado en tu forma de ser
+        </h2>
+
+        <button id="personalidad-retos" class="boton-test">Amante de los retos</button>
+        <button id="personalidad-curioso" class="boton-test">Curioso</button>
+        <button id="personalidad-adrenalina" class="boton-test">Amante de la adrenalina</button>
+        <button id="personalidad-historias" class="boton-test">Apasionado de grandes historias</button>
+      `;
+      break;
+
     default:
       opcionesTest.innerHTML = "";
   }
@@ -52,8 +65,11 @@ botonInicio.addEventListener("click", function () {
 
 opcionesTest.addEventListener("click", function (evento) {
   const botonGustos = evento.target.closest("#test-gustos");
+  const botonPersonalidad = evento.target.closest("#test-personalidad");
 
   if (botonGustos) {
     mostrarPantalla("gustos");
+  } else if (botonPersonalidad) {
+    mostrarPantalla("personalidad");
   }
 });
