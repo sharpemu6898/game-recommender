@@ -1,11 +1,13 @@
-const titulo = document.getElementById("titulo");
-console.log(titulo);
-
 const banner = document.getElementById("banner");
-console.log(banner);
-
 const botonInicio = document.getElementById("boton-inicio");
 const opcionesTest = document.getElementById("opciones-test");
+
+const estadoTest = {
+  ruta: null,
+  genero: null,
+  referente: null,
+  puntos: {},
+};
 
 function mostrarPantalla(pantalla) {
   switch (pantalla) {
@@ -15,11 +17,19 @@ function mostrarPantalla(pantalla) {
           Tu próxima aventura te espera
         </h2>
 
-        <button id="test-gustos" class="boton-test">
+        <button
+          type="button"
+          class="boton-test boton-ruta"
+          data-pantalla="gustos"
+        >
           Descubre nuevas aventuras en base a tus gustos
         </button>
 
-        <button id="test-personalidad" class="boton-test">
+        <button
+          type="button"
+          class="boton-test boton-ruta"
+          data-pantalla="personalidad"
+        >
           Avanza a nuevas aventuras acorde a tu personalidad
         </button>
       `;
@@ -31,10 +41,67 @@ function mostrarPantalla(pantalla) {
           Basado en tus preferencias
         </h2>
 
-        <button id="genero-accion" class="boton-test">Acción</button>
-        <button id="genero-terror" class="boton-test">Terror</button>
-        <button id="genero-aventura" class="boton-test">Aventura</button>
-        <button id="genero-simulacion" class="boton-test">Simulación</button>
+        <button type="button" class="boton-test">
+          Acción
+        </button>
+
+        <button
+          type="button"
+          class="boton-test"
+          data-pantalla="terror"
+        >
+          Terror
+        </button>
+
+        <button type="button" class="boton-test">
+          Aventura
+        </button>
+
+        <button type="button" class="boton-test">
+          Simulación
+        </button>
+      `;
+      break;
+
+    case "terror":
+      opcionesTest.innerHTML = `
+        <h2 class="subtitulo-opciones">
+          Escoge tu referente de terror
+        </h2>
+
+        <div class="lista-referentes">
+          <button
+            type="button"
+            class="tarjeta-referente"
+            data-referente="resident-evil"
+          >
+            <img
+              class="imagen-referente"
+              src="estilo/assets/Resident Evil.jpg"
+              alt="Portada de Resident Evil"
+            />
+
+            <span class="nombre-referente">
+              Resident Evil
+            </span>
+          </button>
+
+          <button
+            type="button"
+            class="tarjeta-referente"
+            data-referente="silent-hill"
+          >
+            <img
+              class="imagen-referente"
+              src="estilo/assets/Silent hill.jpg"
+              alt="Portada de Silent Hill"
+            />
+
+            <span class="nombre-referente">
+              Silent Hill
+            </span>
+          </button>
+        </div>
       `;
       break;
 
@@ -44,16 +111,35 @@ function mostrarPantalla(pantalla) {
           Basado en tu forma de ser
         </h2>
 
-        <button id="personalidad-retos" class="boton-test">Amante de los retos</button>
-        <button id="personalidad-curioso" class="boton-test">Curioso</button>
-        <button id="personalidad-adrenalina" class="boton-test">Amante de la adrenalina</button>
-        <button id="personalidad-historias" class="boton-test">Apasionado de grandes historias</button>
+        <button type="button" class="boton-test">
+          Amante de los retos
+        </button>
+
+        <button type="button" class="boton-test">
+          Curioso
+        </button>
+
+        <button type="button" class="boton-test">
+          Amante de la adrenalina
+        </button>
+
+        <button type="button" class="boton-test">
+          Apasionado de grandes historias
+        </button>
       `;
       break;
 
     default:
       opcionesTest.innerHTML = "";
   }
+}
+
+function iniciarCuestionario(referente) {
+  estadoTest.referente = referente;
+
+  console.log("Estado actual del test:", estadoTest);
+
+  // Aquí mostraremos las preguntas más adelante.
 }
 
 botonInicio.addEventListener("click", function () {
@@ -64,12 +150,35 @@ botonInicio.addEventListener("click", function () {
 });
 
 opcionesTest.addEventListener("click", function (evento) {
-  const botonGustos = evento.target.closest("#test-gustos");
-  const botonPersonalidad = evento.target.closest("#test-personalidad");
+  const botonPantalla = evento.target.closest("[data-pantalla]");
+  const botonReferente = evento.target.closest("[data-referente]");
 
-  if (botonGustos) {
-    mostrarPantalla("gustos");
-  } else if (botonPersonalidad) {
-    mostrarPantalla("personalidad");
+  if (botonPantalla) {
+    const siguientePantalla = botonPantalla.dataset.pantalla;
+
+    switch (siguientePantalla) {
+      case "gustos":
+        estadoTest.ruta = "gustos";
+        break;
+
+      case "personalidad":
+        estadoTest.ruta = "personalidad";
+        break;
+
+      case "terror":
+        estadoTest.genero = "terror";
+        break;
+
+      default:
+        console.warn(`Pantalla desconocida: ${siguientePantalla}`);
+        return;
+    }
+
+    mostrarPantalla(siguientePantalla);
+    return;
+  }
+
+  if (botonReferente) {
+    iniciarCuestionario(botonReferente.dataset.referente);
   }
 });

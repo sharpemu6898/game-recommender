@@ -66,11 +66,64 @@ main {
   animation: pop 0.5s both;
 }
 
-#test-gustos,
-#test-personalidad {
+.boton-ruta {
   width: min(90%, 560px);
   padding: 24px 32px;
   font-size: 1.4rem;
+}
+
+.lista-referentes {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 38px;
+  width: 100%;
+}
+
+.tarjeta-referente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: min(90%, 560px);
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--color-texto);
+  font-family: var(--fuente-principal);
+  cursor: pointer;
+  animation: pop 0.5s both;
+}
+
+.imagen-referente {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgb(0 0 0 / 45%);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.nombre-referente {
+  display: block;
+  color: var(--color-texto);
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.tarjeta-referente:hover .imagen-referente,
+.tarjeta-referente:focus-visible .imagen-referente {
+  transform: scale(1.08);
+  box-shadow: 0 0 28px rgb(125 249 255 / 65%);
+}
+
+.tarjeta-referente:focus-visible {
+  border-radius: 12px;
+  outline: 3px solid #7df9ff;
+  outline-offset: 8px;
 }
 
 #banner {
